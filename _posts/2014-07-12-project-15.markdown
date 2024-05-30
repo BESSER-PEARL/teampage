@@ -1,0 +1,11 @@
+---
+layout: default
+modal-id: 17
+date: 2014-07-08
+img: renzo.png
+name: Renzo Degiovanni
+alt: image-alt
+project-date: April 2014
+category: Web Development
+client: Start Bootstrap
+---
