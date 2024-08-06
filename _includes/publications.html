@@ -1,0 +1,42 @@
+<!-- Portfolio Grid Section -->
+<style>
+        /* Add space between list items */
+    li {
+        margin-bottom: 20px; /* Adjust the value as needed */
+    }
+</style>
+<section id="publications">
+  <div class="container portfolio-flex-grid">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>List of scientific publications</h2>
+        <hr class="star-primary">
+      </div>
+    </div>
+    <div>
+      <ol>
+      {% assign y = 9999 %}
+      {% for publication in site.data.publications %}
+      {% if publication.year != y %}
+      {% assign y = publication.year %}
+      <h3>{{ y }}</h3>
+      {% endif %}
+
+        <li>
+          <b>
+            {% if publication.link %}
+            <a href="{{ publication.link }}">{{ publication.name }}</a>
+            {% else %}
+            {{ publication.name }}
+            {% endif %}
+            <br>
+            {{ publication.authors }}
+            <br>
+          </b>
+          {{ publication.info }}
+        </li>
+      {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
