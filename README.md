@@ -20,10 +20,11 @@ The webpage is accessible from http://localhost:4000
 
 ## How to add scientific publications
 
-- Add a new row in `_data/publications.csv`.
-- Most recent publications at the beginning of the table. Their order in the file will be preserved in the webpage.
-- Mandatory fields: year, authors, name, info
-- Optional fields: link (it creates a hyperlink on the publication name, if you have a DOI link, put it here)
+- Add a new row in `_data/publications.csv`. The order is not relevant since they are ordered by year and then by typer of publication.
+- Mandatory fields: `year`, `authors`, `name`, `type`, `info` 
+  - `type` must be one of the following: `conference`, `journal` or `workshop`.
+  - `info` is used to add details about the publication journal, conference or workshop
+- Optional fields: `link` (it creates a hyperlink on the publication name, if you have a DOI link, put it here)
 
 ## How to add new members
  - Place a image in `/img/portfolio/`

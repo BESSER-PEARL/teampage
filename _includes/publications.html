@@ -15,26 +15,35 @@
     </div>
     <div>
       <ol>
-      {% assign y = 9999 %}
-      {% for publication in site.data.publications %}
-      {% if publication.year != y %}
-      {% assign y = publication.year %}
-      <h3>{{ y }}</h3>
-      {% endif %}
-
-        <li>
-          <b>
-            {% if publication.link %}
-            <a href="{{ publication.link }}">{{ publication.name }}</a>
-            {% else %}
-            {{ publication.name }}
+      {% assign year_list = "2040,2039,2038,2037,2036,2035,2034,2033,2032,2031,2030,2029,2028,2027,2026,2025,2024,2023,2022" | split: "," %}
+      {% assign type_list = "journal,conference,workshop" | split: "," %}
+      {% for y in year_list %}
+        {% assign publications_in_year = site.data.publications | where: "year", y %}
+        {% if publications_in_year.size > 0 %}
+          <h3 style="text-align: center;">{{ y }}</h3>
+          {% for t in type_list %}
+            {% assign publications_in_type = publications_in_year | where: "type", t %}
+            {% if publications_in_type.size > 0 %}
+              <h5>{{ t }}</h5>
+              {% for publication in publications_in_type %}
+                <li>
+                  <b>
+                    {% if publication.link %}
+                    <a href="{{ publication.link }}">{{ publication.name }}</a>
+                    {% else %}
+                    {{ publication.name }}
+                    {% endif %}
+                    <br>
+                    {{ publication.authors }}
+                    <br>
+                  </b>
+                  {{ publication.info }}
+                </li>
+              {% endfor %}
             {% endif %}
-            <br>
-            {{ publication.authors }}
-            <br>
-          </b>
-          {{ publication.info }}
-        </li>
+          {% endfor %}
+          <hr>
+        {% endif %}
       {% endfor %}
       </ol>
     </div>
